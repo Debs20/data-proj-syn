@@ -1,23 +1,23 @@
 
 ui <- fluidPage(theme = shinytheme("spacelab"),
                 
-  titlePanel(tags$h1("Project-1")),
+  titlePanel(tags$h1("CodeClan Website Navigation")),
   
   sidebarLayout(
     sidebarPanel(
       
       selectInput("",
                   "",
-                  choices = 
+                  choices = c("a", "b")
       ),
       
       radioButtons("",
                   "",
-                  choices = 
+                  choices = c("a", "b")
       ),
       
       actionButton("action", 
-                   label = ""
+                   label = "update"
       )
       
     ),
@@ -26,15 +26,17 @@ ui <- fluidPage(theme = shinytheme("spacelab"),
       
       tabsetPanel(
         
-        tabPanel("",
+        tabPanel("How do visitors find CodeClan",
                 
-                plotOutput("")
+                plotOutput("referrers"),
+                
+                plotOutput("social")
                           
         ),
         
-        tabPanel("",
+        tabPanel("Landing Pages",
                  
-                plotOutput("")
+                plotOutput("landing")
                  
         ),
         
@@ -44,9 +46,9 @@ ui <- fluidPage(theme = shinytheme("spacelab"),
          
         ),
         
-        tabPanel("About",
+        tabPanel("",
                  
-                 textOutput("....")
+                 textOutput("")
                  
                  
         )
