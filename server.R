@@ -22,10 +22,12 @@ server <- function(input, output) {
       geom_col(col = "black") +
       labs(x = "\nOriginating Website\n",
            y = "\nNumber of sessions",
-           title = "\nHow people get onto the CodeClan Website") +
+           title = "\nHow people get onto the CodeClan Website",
+           subtitle = "(period from 2020/01/01 to 2020/08/01)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 30, face = "bold"),
+      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+            plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
             axis.title.y = element_text(size = 20),
@@ -45,10 +47,12 @@ server <- function(input, output) {
       geom_col(col = "black") +
       labs(x = "\nSocial Network\n",
            y = "\nNumber of sessions",
-           title = "\nTop social media networks that provide visitors to the CodeClan Website") +
+           title = "\nTop social media networks that provide visitors to the CodeClan Website",
+           subtitle = "(period from 2020/01/01 to 2020/08/01)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 30, face = "bold"),
+      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+            plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
             axis.title.y = element_text(size = 20),
@@ -66,10 +70,12 @@ server <- function(input, output) {
       geom_col(col = "black") +
       labs(x = "Landing webpage\n",
            y = "\nNumber of sessions",
-           title = "\nWhat are the most popular landing pages") +
+           title = "\nWhat are the most popular landing pages",
+           subtitle = "(period from 2020/01/01 to 2020/08/01)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 30, face = "bold"),
+      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+            plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
             axis.title.y = element_text(size = 20),

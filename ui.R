@@ -3,24 +3,24 @@ ui <- fluidPage(theme = shinytheme("spacelab"),
                 
   titlePanel(tags$h1("CodeClan Website Navigation")),
   
-  sidebarLayout(
-    sidebarPanel(
-      
-      selectInput("",
-                  "",
-                  choices = c("a", "b")
-      ),
-      
-      radioButtons("",
-                  "",
-                  choices = c("a", "b")
-      ),
-      
-      actionButton("action", 
-                   label = "update"
-      )
-      
-    ),
+  # sidebarLayout(
+  #   sidebarPanel(
+  #     
+  #     selectInput("",
+  #                 "",
+  #                 choices = c("a", "b")
+  #     ),
+  #     
+  #     radioButtons("",
+  #                 "",
+  #                 choices = c("a", "b")
+  #     ),
+  #     
+  #     actionButton("action", 
+  #                  label = "update"
+  #     )
+  #     
+  #   ),
     
     mainPanel(
       
@@ -59,4 +59,4 @@ ui <- fluidPage(theme = shinytheme("spacelab"),
  
   )
   
-)
+
