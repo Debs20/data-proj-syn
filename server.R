@@ -22,8 +22,8 @@ server <- function(input, output) {
       geom_col(col = "black") +
       labs(x = "\nOriginating Website\n",
            y = "\nNumber of sessions",
-           title = "\nHow people get onto the CodeClan Website",
-           subtitle = "(period from 2020/01/01 to 2020/08/01)\n\n") +
+           title = "\nHow do people get onto the CodeClan Website",
+           subtitle = "(period from 2020-03-01 to 2020-08-01)\n\n") +
       coord_flip() +
       theme_bw() +
       theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
@@ -48,7 +48,7 @@ server <- function(input, output) {
       labs(x = "\nSocial Network\n",
            y = "\nNumber of sessions",
            title = "\nTop social media networks that provide visitors to the CodeClan Website",
-           subtitle = "(period from 2020/01/01 to 2020/08/01)\n\n") +
+           subtitle = "(period from 2020-03-01 to 2020-08-01)\n\n") +
       coord_flip() +
       theme_bw() +
       theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
@@ -71,7 +71,7 @@ server <- function(input, output) {
       labs(x = "Landing webpage\n",
            y = "\nNumber of sessions",
            title = "\nWhat are the most popular landing pages",
-           subtitle = "(period from 2020/01/01 to 2020/08/01)\n\n") +
+           subtitle = "(period from 2020-03-01 to 2020-08-01)\n\n") +
       coord_flip() +
       theme_bw() +
       theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
