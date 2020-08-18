@@ -83,10 +83,31 @@ server <- function(input, output) {
     
   })
   
+  output$goals <- renderPlot({
+    
+    colours <- c("Goal 17" = "blue", "Goal 13" = "red")
+    
+    goals %>%
+      ggplot(aes(x = month)) +
+      geom_line(aes(y = goal17Completions, colour = "Goal 17"), group = 1) +
+      geom_point(aes(y = goal17Completions, colour = "Goal 17")) +
+      geom_line(aes(y = goal13Completions, colour = "Goal 13"), group = 1) +
+      geom_point(aes(y = goal13Completions, colour = "Goal 13")) +
+      scale_colour_manual(values = colours) +
+      labs(x = "Month\n",
+           y = "\nNumber of Completions",
+           title = "\nNumber of Completions of Goals 13 and 17",
+           subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
+      theme_bw() +
+      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+            plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
+            axis.title.x = element_text(size = 20),
+            axis.text = element_text(size = 15),
+            axis.title.y = element_text(size = 20))
   
   
-  
-  output$table <- DT::renderDataTable({
+    
+  #  output$table <- DT::renderDataTable({
     
   
       
