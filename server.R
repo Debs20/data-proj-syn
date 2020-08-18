@@ -103,7 +103,9 @@ server <- function(input, output) {
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
-            axis.title.y = element_text(size = 20))
+            axis.title.y = element_text(size = 20),
+            legend.title = element_text(size = 20),
+            legend.text = element_text(size = 15))
   
   
     
