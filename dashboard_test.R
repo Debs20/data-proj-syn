@@ -4,6 +4,7 @@ library(ggplot2)
 library(shiny)
 library(shinythemes)
 library(readr)
+library(shinydashboard)
 
 # whatever functions we want....
 
@@ -23,19 +24,35 @@ sidebar <- dashboardSidebar(
 body <- dashboardBody(
   tabItems(
     tabItem(tabName = "social_location",
-            box(fluidRow(
-              plotOutput("referrers")),
-              fluidRow(
-                plotOutput("social"))
+            box(width = 6,
+           plotOutput("referrers")
+            )
+
+
+,
+
+            box(width = 6,
+                plotOutput("social")
+                )
+
+
+            ,
+
+
+              valueBox(50*2, "valueBox test", icon = icon("list"))
+
+              
+            
               
 
-            )
-    ),
+            ),
+
+
     
     tabItem(tabName = "landing_page",
-            box(fluidRow(
+            box(width = 12,
               plotOutput("landing")
-            ))
+            )
     ),
     
     tabItem(tabName = "valueboxtest",
@@ -79,7 +96,8 @@ server <- function(input, output) {
            title = "\nHow people get onto the CodeClan Website",
            subtitle = "(period from 2020/01/01 to 2020/08/01)\n\n") +
       coord_flip() +
-      theme_bw() 
+      theme_bw() +
+      theme(legend.position = "none")
   })
   
   
@@ -97,7 +115,8 @@ server <- function(input, output) {
            title = "\nTop social media networks that provide visitors to the CodeClan Website",
            subtitle = "(period from 2020/01/01 to 2020/08/01)\n\n") +
       coord_flip() +
-      theme_bw() 
+      theme_bw() +
+      theme(legend.position = "none")
     
   })
   
@@ -114,7 +133,8 @@ server <- function(input, output) {
            title = "\nWhat are the most popular landing pages",
            subtitle = "(period from 2020/01/01 to 2020/08/01)\n\n") +
       coord_flip() +
-      theme_bw() 
+      theme_bw() +
+      theme(legend.position = "none")
   })
 }
 
