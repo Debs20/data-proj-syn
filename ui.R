@@ -40,6 +40,13 @@ ui <- fluidPage(theme = shinytheme("spacelab"),
                  
         ),
         
+        tabPanel("Goal Completion",
+                 
+                 plotOutput("goals")
+                 
+        ),
+        
+        
         tabPanel("",
                  
                  DT::dataTableOutput("")     
