@@ -89,8 +89,8 @@ server <- function(input, output) {
       summarise(sessions = sum(sessions)) %>%
       top_n(10) %>%
       ggplot() +
-      aes(x = reorder(fullReferrer, - desc(sessions)), y = sessions, fill = fullReferrer) +
-      geom_col(col = "black") +
+      aes(x = reorder(fullReferrer, - desc(sessions)), y = sessions) +
+      geom_col(fill = "dark blue", col = "black") +
       labs(x = "\nOriginating Website\n",
            y = "\nNumber of sessions",
            title = "\nHow people get onto the CodeClan Website",
@@ -108,8 +108,8 @@ server <- function(input, output) {
       arrange(desc(sessions)) %>%
       head(7) %>%
       ggplot() +
-      aes(x = reorder(socialNetwork, - desc(sessions)), y = sessions, fill = socialNetwork) +
-      geom_col(col = "black") +
+      aes(x = reorder(socialNetwork, - desc(sessions)), y = sessions) +
+      geom_col(fill = "dark blue", col = "black") +
       labs(x = "\nSocial Network\n",
            y = "\nNumber of sessions",
            title = "\nTop social media networks that provide visitors to the CodeClan Website",
@@ -126,8 +126,8 @@ server <- function(input, output) {
       arrange(desc(sessions)) %>%
       head(10) %>%
       ggplot() +
-      aes(x = reorder(landingPagePath, - desc(sessions)), y = sessions, fill = landingPagePath) +
-      geom_col(col = "black") +
+      aes(x = reorder(landingPagePath, - desc(sessions)), y = sessions) +
+      geom_col(fill = "dark blue", col = "black") +
       labs(x = "Landing webpage\n",
            y = "\nNumber of sessions",
            title = "\nWhat are the most popular landing pages",
