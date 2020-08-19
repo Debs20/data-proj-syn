@@ -90,11 +90,11 @@ server <- function(input, output) {
       geom_col(fill = "dark blue", col = "black") +
       labs(x = "Landing webpage\n",
            y = "\nNumber of completions",
-           title = "\nWhat page did people land on before completing goal 17",
+           title = "\nWhat page did people land on before completing goal 17 (PSD)",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+      theme(plot.title = element_text(size = 28, face = "bold", hjust = 0.5),
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
@@ -116,11 +116,11 @@ server <- function(input, output) {
       geom_col(fill = "dark blue", col = "black") +
       labs(x = "Landing webpage\n",
            y = "\nNumber of completions",
-           title = "\nWhat page did people land on before completing goal 13",
+           title = "\nWhat page did people land on before completing goal 13 (DA)",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+      theme(plot.title = element_text(size = 28, face = "bold", hjust = 0.5),
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
@@ -131,14 +131,14 @@ server <- function(input, output) {
   
   output$goals <- renderPlot({
     
-    colours <- c("Goal 17" = "blue", "Goal 13" = "red")
+    colours <- c("Goal 17 (PSD)" = "blue", "Goal 13 (DA)" = "red")
     
     goals %>%
       ggplot(aes(x = month)) +
-      geom_line(aes(y = goal17Completions, colour = "Goal 17"), group = 1) +
-      geom_point(aes(y = goal17Completions, colour = "Goal 17")) +
-      geom_line(aes(y = goal13Completions, colour = "Goal 13"), group = 1) +
-      geom_point(aes(y = goal13Completions, colour = "Goal 13")) +
+      geom_line(aes(y = goal17Completions, colour = "Goal 17 (PSD)"), group = 1) +
+      geom_point(aes(y = goal17Completions, colour = "Goal 17 (PSD)")) +
+      geom_line(aes(y = goal13Completions, colour = "Goal 13 (DA)"), group = 1) +
+      geom_point(aes(y = goal13Completions, colour = "Goal 13 (DA)")) +
       scale_colour_manual(values = colours) +
       labs(x = "Month\n",
            y = "\nNumber of Completions",

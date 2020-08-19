@@ -17,7 +17,10 @@ ui <- fluidPage(theme = shinytheme("spacelab"),
         
         tabPanel("Landing Pages",
                  
-                plotOutput("landing")
+                plotOutput("landing"),
+                
+                textOutput("landing_text")
+                
                  
         ),
         
