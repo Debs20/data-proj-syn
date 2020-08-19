@@ -16,14 +16,14 @@ server <- function(input, output) {
       arrange(desc(sessions)) %>%
       group_by(fullReferrer) %>%
       summarise(sessions = sum(sessions)) %>%
-      top_n(10) %>%
+      top_n(5) %>%
       ggplot() +
       aes(x = reorder(fullReferrer, - desc(sessions)), y = sessions) +
       geom_col(fill = "dark blue", col = "black") +
       labs(x = "\nOriginating Website\n",
            y = "\nNumber of sessions",
            title = "\nHow do people get onto the CodeClan Website",
-           subtitle = "(period from 2020-03-01 to 2020-08-01)\n\n") +
+           subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
       theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
@@ -47,7 +47,7 @@ server <- function(input, output) {
       labs(x = "\nSocial Network\n",
            y = "\nNumber of sessions",
            title = "\nTop social media networks that provide visitors to the CodeClan Website",
-           subtitle = "(period from 2020-03-01 to 2020-08-01)\n\n") +
+           subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
       theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
@@ -69,7 +69,7 @@ server <- function(input, output) {
       labs(x = "Landing webpage\n",
            y = "\nNumber of sessions",
            title = "\nWhat are the most popular landing pages",
-           subtitle = "(period from 2020-03-01 to 2020-08-01)\n\n") +
+           subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
       theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
@@ -77,6 +77,55 @@ server <- function(input, output) {
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
             axis.title.y = element_text(size = 20))
+    
+  })
+  
+  output$landing_goals17 <- renderPlot({
+    
+    landing_goals %>%
+      arrange(desc(goal17Completions)) %>%
+      head(9) %>%
+      ggplot() +
+      aes(x = reorder(landingPagePath, - desc(goal17Completions)), y = goal17Completions) +
+      geom_col(fill = "dark blue", col = "black") +
+      labs(x = "Landing webpage\n",
+           y = "\nNumber of completions",
+           title = "\nWhat page did people land on before completing goal 17",
+           subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
+      coord_flip() +
+      theme_bw() +
+      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+            plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
+            axis.title.x = element_text(size = 20),
+            axis.text = element_text(size = 15),
+            axis.title.y = element_text(size = 20))
+    
+    
+  })
+  
+  
+  output$landing_goals13 <- renderPlot({
+    
+    landing_goals %>%
+      mutate(landingPagePath = recode(landingPagePath, "/courses/managing-data-business-insights/?ct=t(short+courses+uk_COPY_01)&mc_cid=40897d9e96&mc_eid=[UNIQID]"
+                                      = "/courses/managing-data-business-inights")) %>%
+      arrange(desc(goal13Completions)) %>%
+      head(9) %>%
+      ggplot() +
+      aes(x = reorder(landingPagePath, - desc(goal13Completions)), y = goal13Completions) +
+      geom_col(fill = "dark blue", col = "black") +
+      labs(x = "Landing webpage\n",
+           y = "\nNumber of completions",
+           title = "\nWhat page did people land on before completing goal 13",
+           subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
+      coord_flip() +
+      theme_bw() +
+      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+            plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
+            axis.title.x = element_text(size = 20),
+            axis.text = element_text(size = 15),
+            axis.title.y = element_text(size = 20))
+    
     
   })
   
@@ -104,21 +153,8 @@ server <- function(input, output) {
             legend.title = element_text(size = 20),
             legend.text = element_text(size = 15))
   
-  
-    
-  #  output$table <- DT::renderDataTable({
-    
-  
-      
+
   })
-  
-  output$about <- renderText({
-    
-  })
-    
 
  
 } 
-
-  
-  

@@ -2,25 +2,6 @@
 ui <- fluidPage(theme = shinytheme("spacelab"),
                 
   titlePanel(tags$h1("CodeClan Website Navigation")),
-  
-  # sidebarLayout(
-  #   sidebarPanel(
-  #     
-  #     selectInput("",
-  #                 "",
-  #                 choices = c("a", "b")
-  #     ),
-  #     
-  #     radioButtons("",
-  #                 "",
-  #                 choices = c("a", "b")
-  #     ),
-  #     
-  #     actionButton("action", 
-  #                  label = "update"
-  #     )
-  #     
-  #   ),
     
     mainPanel(
       
@@ -42,21 +23,11 @@ ui <- fluidPage(theme = shinytheme("spacelab"),
         
         tabPanel("Goal Completion",
                  
-                 plotOutput("goals")
+                 plotOutput("goals"),
                  
-        ),
-        
-        
-        tabPanel("",
+                 plotOutput("landing_goals17"),
                  
-                 DT::dataTableOutput("")     
-         
-        ),
-        
-        tabPanel("",
-                 
-                 textOutput("")
-                 
+                 plotOutput("landing_goals13")
                  
         )
         
@@ -66,4 +37,3 @@ ui <- fluidPage(theme = shinytheme("spacelab"),
  
   )
   
-
