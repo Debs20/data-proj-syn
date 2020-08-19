@@ -37,14 +37,19 @@ body <- dashboardBody(
     
     
     tabItem(tabName = "landing_page",
-            box(width = 12,
+            fluidRow(
+              box(width = 12,
                 plotOutput("landing")
+            )
             ),
-            box(width = 12,
+            
+            fluidRow(
+              box(width = 6,
                 plotOutput("landing_goals13")
             ),
-            box(width = 12,
+            box(width = 6,
                 plotOutput("landing_goals17")
+            )
             )
     ),
     
