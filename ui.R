@@ -11,24 +11,26 @@ sidebar <- dashboardSidebar(
 body <- dashboardBody(
   tabItems(
     tabItem(tabName = "social_location",
-            box(width = 12,
+            fluidRow(
+              box(width = 8,
                 plotOutput("goals")
-            )
+            ),
+            
+            valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups this month", icon = icon("list"))
             
             
-            ,
+            ),
             
-            box(width = 12,
+            fluidRow(
+              box(width = 6,
                 plotOutput("social")
             ),
             
-            box(width = 8,
+            box(width = 6,
                 plotOutput("referrers")
+            )
             ),
             
-            box(width = 4,
-                valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups this month", icon = icon("list"))
-            )
             
     ),
     
