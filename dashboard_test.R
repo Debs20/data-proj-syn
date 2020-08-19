@@ -1,3 +1,87 @@
+# ---- global ----
+
+library(dplyr)
+library(ggplot2)
+library(shiny)
+library(shinythemes)
+library(readr)
+library(shinydashboard)
+
+# whatever functions we want....
+
+referrers <- read_csv("data/referrer.csv")
+social_network <- read_csv("data/social_network.csv")
+landing_page <- read_csv("data/landing_page.csv")
+goals <- read_csv("data/goals.csv")
+sessions <- read_csv("data/sessions.csv")
+
+
+#---- ui ----
+
+sidebar <- dashboardSidebar(
+  sidebarMenu(
+    menuItem("How do visitors find CodeClan?", tabName = "social_location", icon = icon("dashboard")),
+    menuItem("Landing Page", icon = icon("dashboard"), tabName = "landing_page",
+             badgeLabel = "new", badgeColor = "green"),
+    menuItem("valueBox test", tabName = "valueboxtest", icon = icon("thumbs-up", lib = "glyphicon"))
+  )
+)
+
+body <- dashboardBody(
+  tabItems(
+    tabItem(tabName = "social_location",
+            box(width = 12,
+                plotOutput("goals")
+            )
+            
+            
+            ,
+            
+            box(width = 12,
+                plotOutput("social")
+            ),
+            
+            box(width = 8,
+                plotOutput("referrers")
+            ),
+            
+            box(width = 4,
+                valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups this month", icon = icon("list"))
+            )
+            
+    ),
+    
+    
+    
+    tabItem(tabName = "landing_page",
+            box(width = 12,
+                plotOutput("landing")
+            ),
+            box(width = 12,
+                plotOutput("landing_goals13")
+            ),
+            box(width = 12,
+                plotOutput("landing_goals17")
+            )
+    ),
+    
+    tabItem(tabName = "valueboxtest",
+            valueBox(50*2, "valueBox test", icon = icon("list")))
+  )
+)
+
+
+
+
+ui <- dashboardPage(
+  dashboardHeader(title = "Website Navigation Results"),
+  sidebar,
+  body
+)
+
+
+# ---- server ----
+
 server <- function(input, output) {
   
   output$referrers <- renderPlot({
@@ -158,3 +242,7 @@ server <- function(input, output) {
   
   
 } 
+
+# ---- App Generation ----
+
+shinyApp(ui, server)

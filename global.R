@@ -3,6 +3,7 @@ library(ggplot2)
 library(shiny)
 library(shinythemes)
 library(readr)
+library(shinydashboard)
 
 referrers <- read_csv("data/referrer.csv")
 social_network <- read_csv("data/social_network.csv")
