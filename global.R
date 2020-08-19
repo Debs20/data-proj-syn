@@ -4,10 +4,9 @@ library(shiny)
 library(shinythemes)
 library(readr)
 
-# whatever functions we want....
-
 referrers <- read_csv("data/referrer.csv")
 social_network <- read_csv("data/social_network.csv")
 landing_page <- read_csv("data/landing_page.csv")
 goals <- read_csv("data/goals.csv")
 sessions <- read_csv("data/sessions.csv")
+landing_goals <- read_csv("data/landing_goals.csv")
