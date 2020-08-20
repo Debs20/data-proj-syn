@@ -22,11 +22,11 @@ server <- function(input, output) {
       geom_col(fill = "dark blue", col = "black") +
       labs(x = "\nOriginating Website\n",
            y = "\nNumber of sessions",
-           title = "\nHow do people get onto the CodeClan Website",
+           title = "\nHow do people find the CodeClan wesbite",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+      theme(plot.title = element_text(size = 25, face = "bold", hjust = 0.5),
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
@@ -46,11 +46,11 @@ server <- function(input, output) {
       geom_col(fill = "dark blue", col = "black") +
       labs(x = "\nSocial Network\n",
            y = "\nNumber of sessions",
-           title = "\nTop social media networks that provide visitors to the CodeClan Website",
+           title = "\nTop social media networks proving traffic",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+      theme(plot.title = element_text(size = 25, face = "bold", hjust = 0.5),
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
@@ -61,8 +61,17 @@ server <- function(input, output) {
   output$landing <- renderPlot({
     
     landing_page %>%
+      mutate(landingPagePath = recode(landingPagePath, "/blog/best-podcast-coders-programmers/" = "blogs", 
+                                      "/blog/7-celebrities-didnt-know-code/" = "blogs", "/blog/hire-developers-online-tests/" = "blogs",
+                                      "/blog/meet-the-graduates-who-quit-their-jobs-to-learn-how-to-code/" = "blogs",
+                                      "/blog/meet-five-codeclan-career-changers/" = "blogs", "/blog/first-developer-job-advice/" = "blog",
+                                      "/blog/best-podcasts-coders-programmers/" = "blogs", "/blog/learn-to-code-working/" = "blogs",
+                                      "/blog/meet-the-team-aileen-mcdonald/" = "blogs",
+                                      "/blog/meet-emma-from-primary-teacher-to-front-end-developer/" = "blogs")) %>%
       arrange(desc(sessions)) %>%
-      head(10) %>%
+      group_by(landingPagePath) %>%
+      summarise(sessions = sum(sessions)) %>%
+      top_n(9) %>%
       ggplot() +
       aes(x = reorder(landingPagePath, - desc(sessions)), y = sessions) +
       geom_col(fill = "dark blue", col = "black") +
@@ -72,7 +81,7 @@ server <- function(input, output) {
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
+      theme(plot.title = element_text(size = 25, face = "bold", hjust = 0.5),
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
@@ -90,11 +99,11 @@ server <- function(input, output) {
       geom_col(fill = "dark blue", col = "black") +
       labs(x = "Landing webpage\n",
            y = "\nNumber of completions",
-           title = "\nWhat page did people land on before completing goal 17 (PSD)",
+           title = "\nLanding page before completing goal 17 (PSD)",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 28, face = "bold", hjust = 0.5),
+      theme(plot.title = element_text(size = 25, face = "bold", hjust = 0.5),
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
@@ -116,11 +125,11 @@ server <- function(input, output) {
       geom_col(fill = "dark blue", col = "black") +
       labs(x = "Landing webpage\n",
            y = "\nNumber of completions",
-           title = "\nWhat page did people land on before completing goal 13 (DA)",
+           title = "\nLanding page before completing goal 13 (DA)",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 28, face = "bold", hjust = 0.5),
+      theme(plot.title = element_text(size = 25, face = "bold", hjust = 0.5),
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
@@ -155,6 +164,7 @@ server <- function(input, output) {
     
     
   })
+  
   
   output$bulletgraph13 <- renderPlotly({
     
