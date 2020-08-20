@@ -11,43 +11,36 @@ sidebar <- dashboardSidebar(
 body <- dashboardBody(
   tabItems(
     tabItem(tabName = "social_location",
+            
             fluidRow(
-              column(width = 8,
+              column(
+              width = 4,
+              box(title = "DA webinar registrations - July 2020",
+                    plotlyOutput("bulletgraph13", height = "120px")
+              )
+              ),
+            
+              column(width = 4,
+                valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups - July 2020", icon = icon("list"))
+              ),
+              
+              column(width = 4,
+                box(title = "PSD webinar registrations - July 2020",
+                    plotlyOutput("bulletgraph17", height = "120px")
+              )
+              )
+            
+            ),
+            
+            fluidRow(
+              width = 12,
                 plotOutput("goals")
               ),
 
 
-              column(width = 4,
-                fluidRow(
-                valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups this month", icon = icon("list"))
-                ),
-                
-                fluidRow(
-                  width = 12,
-                plotlyOutput("bulletgraphs")
-                )
+ 
 
 
-)
-            ),
-            
-            # 
-            # fluidRow(
-            #   column(width = 6,
-            #          
-            #            plotlyOutput("bulletgraph13")
-            #             
-            #          ),
-            #   column(width = 6,
-            #          
-            #            plotlyOutput("bulletgraph17")
-            #          
-            #          )
-            # 
-            # 
-            # 
-            # ),
-            
             fluidRow(
               column(width = 6,
                     
