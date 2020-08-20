@@ -20,7 +20,7 @@ server <- function(input, output) {
       ggplot() +
       aes(x = reorder(fullReferrer, - desc(sessions)), y = sessions) +
       geom_col(fill = "dark blue", col = "black") +
-      labs(x = "\nOriginating Website\n",
+      labs(x = "\nOriginating Platform\n",
            y = "\nNumber of sessions",
            title = "\nHow do people find the CodeClan wesbite",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
@@ -64,20 +64,21 @@ server <- function(input, output) {
       mutate(landingPagePath = recode(landingPagePath, "/blog/best-podcast-coders-programmers/" = "blogs", 
                                       "/blog/7-celebrities-didnt-know-code/" = "blogs", "/blog/hire-developers-online-tests/" = "blogs",
                                       "/blog/meet-the-graduates-who-quit-their-jobs-to-learn-how-to-code/" = "blogs",
-                                      "/blog/meet-five-codeclan-career-changers/" = "blogs", "/blog/first-developer-job-advice/" = "blog",
+                                      "/blog/meet-five-codeclan-career-changers/" = "blogs", "/blog/first-developer-job-advice/" = "blogs",
                                       "/blog/best-podcasts-coders-programmers/" = "blogs", "/blog/learn-to-code-working/" = "blogs",
                                       "/blog/meet-the-team-aileen-mcdonald/" = "blogs",
-                                      "/blog/meet-emma-from-primary-teacher-to-front-end-developer/" = "blogs")) %>%
+                                      "/blog/meet-emma-from-primary-teacher-to-front-end-developer/" = "blogs", "/" = "Homepage", "/blog/9-common-misconceptions-coding/" = "blogs",
+                                      "/blog/9-websites-start-coding-journey/" = "blogs")) %>%
       arrange(desc(sessions)) %>%
       group_by(landingPagePath) %>%
       summarise(sessions = sum(sessions)) %>%
-      top_n(9) %>%
+      top_n(8) %>%
       ggplot() +
       aes(x = reorder(landingPagePath, - desc(sessions)), y = sessions) +
       geom_col(fill = "dark blue", col = "black") +
       labs(x = "Landing webpage\n",
            y = "\nNumber of sessions",
-           title = "\nWhat are the most popular landing pages",
+           title = "\nHow do users typically enter the website",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
@@ -86,7 +87,7 @@ server <- function(input, output) {
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
             axis.title.y = element_text(size = 20))
-    
+#What are the most popular landing pages    
   })
   
   output$landing_goals17 <- renderPlot({
