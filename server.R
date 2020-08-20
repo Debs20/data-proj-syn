@@ -92,6 +92,8 @@ server <- function(input, output) {
   output$landing_goals17 <- renderPlot({
     
     landing_goals %>%
+      mutate(landingPagePath = recode(landingPagePath, "/courses/professional-software-development/" = "/courses/PSD/",
+                                      "/courses/thank-you-for-your-application/" = "/thank-you-for-application/")) %>%
       arrange(desc(goal17Completions)) %>%
       head(9) %>%
       ggplot() +
@@ -103,7 +105,7 @@ server <- function(input, output) {
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 25, face = "bold", hjust = 0.5),
+      theme(plot.title = element_text(size = 23, face = "bold", hjust = 0.5),
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
@@ -117,7 +119,7 @@ server <- function(input, output) {
     
     landing_goals %>%
       mutate(landingPagePath = recode(landingPagePath, "/courses/managing-data-business-insights/?ct=t(short+courses+uk_COPY_01)&mc_cid=40897d9e96&mc_eid=[UNIQID]"
-                                      = "/courses/managing-data-business-inights")) %>%
+                                      = "/managing-data-business-inights", "/courses/professional-software-development/" = "/courses/PSD/")) %>%
       arrange(desc(goal13Completions)) %>%
       head(9) %>%
       ggplot() +
@@ -129,7 +131,7 @@ server <- function(input, output) {
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
-      theme(plot.title = element_text(size = 25, face = "bold", hjust = 0.5),
+      theme(plot.title = element_text(size = 23, face = "bold", hjust = 0.5),
             plot.subtitle = element_text(size = 18, face = "italic", hjust = 0.5),
             axis.title.x = element_text(size = 20),
             axis.text = element_text(size = 15),
