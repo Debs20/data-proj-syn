@@ -1,5 +1,8 @@
 
 library(plotly)
+library(data.table)
+library(tidyverse)
+
 #goal 13 individual code
 
 goals_1<- plot_ly(

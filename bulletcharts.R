@@ -1,9 +1,14 @@
 
 library(plotly)
+library(tidyverse)
+
+goals <- read_csv("data/goals.csv")
+goal_17 <- goals$goal17Completions[length(goals)]
+goal_13 <- goals$goal13Completions[length(goals)]
 
 #Goal 17 code
-goal_4 <- plot_ly() 
-goal_4 <- goal_4 %>%
+goal_17_plot <- plot_ly() 
+goal_17 <- goal_17 %>%
   add_trace(
     type = "indicator",
     mode = "number+gauge+delta",
@@ -23,7 +28,8 @@ goal_4 <- goal_4 %>%
         list(range = c(150, 200), color = "gray")),
       bar = list(color = "green"))) 
 #Goal 13 code
-goal_4<- goal_4 %>%
+
+goal_4 <- goal_4 %>%
   add_trace(
     type =  "indicator",
     mode = "number+gauge+delta",
