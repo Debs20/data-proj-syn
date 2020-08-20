@@ -24,8 +24,8 @@ body <- dashboardBody(
                 valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups - July 2020", icon = icon("list"))
               ),
               
-              column(width = 4,
-                box(title = "PSD webinar registrations - July 2020",
+              box(column(width = 4,
+                    title = "PSD webinar registrations - July 2020",
                     plotlyOutput("bulletgraph17", height = "120px")
               )
               )
