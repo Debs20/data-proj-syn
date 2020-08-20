@@ -153,7 +153,7 @@ server <- function(input, output) {
       scale_colour_manual(values = colours) +
       labs(x = "Month\n",
            y = "\nNumber of Completions",
-           title = "\nNumber of Completions of Goals 13 and 17",
+           title = "\nNumber of Completions of DA and PSD signups",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       theme_bw() +
       theme(plot.title = element_text(size = 30, face = "bold", hjust = 0.5),
