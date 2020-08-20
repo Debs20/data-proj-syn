@@ -1,10 +1,11 @@
 
 sidebar <- dashboardSidebar(
   sidebarMenu(
-    menuItem("How do visitors find CodeClan?", tabName = "social_location", icon = icon("dashboard")),
-    menuItem("Landing Page", icon = icon("dashboard"), tabName = "landing_page",
-             badgeLabel = "new", badgeColor = "green"),
-    menuItem("valueBox test", tabName = "valueboxtest", icon = icon("thumbs-up", lib = "glyphicon"))
+    menuItem("Webinar Participation", tabName = "social_location", icon = icon("dashboard")),
+    menuItem("User Journey", icon = icon("dashboard"), tabName = "landing_page",
+             badgeLabel = "new", badgeColor = "green")
+#    ,
+#    menuItem("valueBox test", tabName = "valueboxtest", icon = icon("thumbs-up", lib = "glyphicon"))
   )
 )
 
@@ -14,18 +15,21 @@ body <- dashboardBody(
             
             fluidRow(
               column(
-              width = 4,
-              box(title = "DA webinar registrations - July 2020",
+              width = 5,
+              box(width = 12,
+                  title = "DA webinar registrations - July 2020",
                     plotlyOutput("bulletgraph13", height = "120px")
               )
               ),
             
-              column(width = 4,
-                valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups - July 2020", icon = icon("list"))
+              column(width = 2,
+                     br(),
+                valueBox(width = 12, goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total signups (July)", icon = icon("list"))
               ),
               
-              box(column(width = 4,
-                    title = "PSD webinar registrations - July 2020",
+              column(width = 5,
+                    box(width = 12, 
+                        title = "PSD webinar registrations - July 2020",
                     plotlyOutput("bulletgraph17", height = "120px")
               )
               )
@@ -75,10 +79,10 @@ body <- dashboardBody(
                 plotOutput("landing_goals17")
             )
             )
-    ),
+    )
     
-    tabItem(tabName = "valueboxtest",
-            valueBox(50*2, "valueBox test", icon = icon("list")))
+#    tabItem(tabName = "valueboxtest",
+ #           valueBox(50*2, "valueBox test", icon = icon("list")))
   )
 )
 
@@ -86,7 +90,7 @@ body <- dashboardBody(
 
 
 ui <- dashboardPage(
-  dashboardHeader(title = "Website Navigation Results"),
+  dashboardHeader(title = "Website Engagement"),
   sidebar,
   body
 )
