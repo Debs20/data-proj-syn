@@ -4,6 +4,7 @@ library(shiny)
 library(shinythemes)
 library(readr)
 library(shinydashboard)
+library(plotly)
 
 referrers <- read_csv("data/referrer.csv")
 social_network <- read_csv("data/social_network.csv")

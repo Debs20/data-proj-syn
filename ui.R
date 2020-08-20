@@ -1,33 +1,67 @@
 
 sidebar <- dashboardSidebar(
   sidebarMenu(
-    menuItem("How do visitors find CodeClan?", tabName = "social_location", icon = icon("dashboard")),
-    menuItem("Landing Page", icon = icon("dashboard"), tabName = "landing_page",
-             badgeLabel = "new", badgeColor = "green"),
-    menuItem("valueBox test", tabName = "valueboxtest", icon = icon("thumbs-up", lib = "glyphicon"))
+    menuItem("Webinar Participation", tabName = "social_location", icon = icon("user", lib = "glyphicon"),
+             badgeLabel = "main", badgeColor = "green"),
+    menuItem("User Journey", icon = icon("send", lib = "glyphicon"), tabName = "landing_page"
+             #,
+             #badgeLabel = "path", badgeColor = "orange"
+             )
+#    ,
+#    menuItem("valueBox test", tabName = "valueboxtest", icon = icon("thumbs-up", lib = "glyphicon"))
   )
 )
 
 body <- dashboardBody(
   tabItems(
     tabItem(tabName = "social_location",
+            
             fluidRow(
-              box(width = 8,
+              column(
+              width = 5,
+              box(width = 12,
+                  title = "DA webinar registrations - July 2020",
+                    plotlyOutput("bulletgraph13", height = "120px")
+              )
+              ),
+            
+              column(width = 2,
+                     br(),
+                     br(),
+                valueBox(width = 12, goals$goal17Completions[5] + goals$goal13Completions[5], "Total signups (July)", icon = icon("list"))
+              ),
+              
+              column(width = 5,
+                    box(width = 12, 
+                        title = "PSD webinar registrations - July 2020",
+                    plotlyOutput("bulletgraph17", height = "120px")
+              )
+              )
+            
+            ),
+            
+            fluidRow(
+              width = 12,
                 plotOutput("goals")
-            ),
-            
-            valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups this month", icon = icon("list"))
-            
-            
-            ),
-            
+              ),
+
+
+ 
+
+
             fluidRow(
-              box(width = 6,
+              column(width = 6,
+                     br(),
+                    
                 plotOutput("social")
+                     
             ),
             
-            box(width = 6,
-                plotOutput("referrers")
+            column(width = 6,
+                   br(),
+                   
+                    plotOutput("referrers")
+                   
             )
             ),
             
@@ -51,10 +85,10 @@ body <- dashboardBody(
                 plotOutput("landing_goals17")
             )
             )
-    ),
+    )
     
-    tabItem(tabName = "valueboxtest",
-            valueBox(50*2, "valueBox test", icon = icon("list")))
+#    tabItem(tabName = "valueboxtest",
+ #           valueBox(50*2, "valueBox test", icon = icon("list")))
   )
 )
 
@@ -62,7 +96,7 @@ body <- dashboardBody(
 
 
 ui <- dashboardPage(
-  dashboardHeader(title = "Website Navigation Results"),
+  dashboardHeader(title = "Website Engagement"),
   sidebar,
   body
 )
