@@ -14,29 +14,39 @@ body <- dashboardBody(
             fluidRow(
               column(width = 8,
                 plotOutput("goals")
-            ),
-                   
-            valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups this month", icon = icon("list"))
+              ),
 
-            
-            ),
-            
-            
-            fluidRow(
-              column(width = 6,
-                     
-                       plotlyOutput("bulletgraph13")
-                        
-                     ),
-              column(width = 6,
-                     
-                       plotlyOutput("bulletgraph17")
-                     
-                     ),
 
-            
-            
+              column(width = 4,
+                fluidRow(
+                valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups this month", icon = icon("list"))
+                ),
+                
+                fluidRow(
+                  width = 12,
+                plotlyOutput("bulletgraphs")
+                )
+
+
+)
             ),
+            
+            # 
+            # fluidRow(
+            #   column(width = 6,
+            #          
+            #            plotlyOutput("bulletgraph13")
+            #             
+            #          ),
+            #   column(width = 6,
+            #          
+            #            plotlyOutput("bulletgraph17")
+            #          
+            #          )
+            # 
+            # 
+            # 
+            # ),
             
             fluidRow(
               column(width = 6,
