@@ -1,5 +1,13 @@
 
+<<<<<<< HEAD
 
+=======
+library(plotly)
+library(data.table)
+library(tidyverse)
+
+#goal 13 individual code
+>>>>>>> feature/bulletgraph
 
 goals_1<- plot_ly(
   type = "indicator",
@@ -26,6 +34,11 @@ goals_1 <- goals_1 %>%
 goals_1
 
 
+<<<<<<< HEAD
+=======
+#goal 17 individual code 
+
+>>>>>>> feature/bulletgraph
 goals_2<- plot_ly(
   type = "indicator",
   mode = "number+gauge+delta",
@@ -48,4 +61,8 @@ goals_2<- plot_ly(
 goals_2 <- goals_2 %>%
   layout(margin = list(l= 150, r= 10))
 
+<<<<<<< HEAD
 goals_2
+=======
+goals_2
+>>>>>>> feature/bulletgraph

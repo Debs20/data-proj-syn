@@ -12,22 +12,43 @@ body <- dashboardBody(
   tabItems(
     tabItem(tabName = "social_location",
             fluidRow(
-              box(width = 8,
+              column(width = 8,
                 plotOutput("goals")
             ),
-            
+                   
             valueBox(goals$goal17Completions[length(goals)] + goals$goal13Completions[length(goals)], "Total webinar signups this month", icon = icon("list"))
+
+            
+            ),
+            
+            
+            fluidRow(
+              column(width = 6,
+                     
+                       plotlyOutput("bulletgraph13")
+                        
+                     ),
+              column(width = 6,
+                     
+                       plotlyOutput("bulletgraph17")
+                     
+                     ),
+
             
             
             ),
             
             fluidRow(
-              box(width = 6,
+              column(width = 6,
+                    
                 plotOutput("social")
+                     
             ),
             
-            box(width = 6,
-                plotOutput("referrers")
+            column(width = 6,
+                   
+                    plotOutput("referrers")
+                   
             )
             ),
             
