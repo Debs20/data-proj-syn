@@ -22,7 +22,7 @@ server <- function(input, output) {
       geom_col(fill = "dark blue", col = "black") +
       labs(x = "\nOriginating Platform\n",
            y = "\nNumber of sessions",
-           title = "\nHow do people find the CodeClan wesbite",
+           title = "\nHow do people find the website",
            subtitle = "(period from 2020-03-01 to 2020-07-31)\n\n") +
       coord_flip() +
       theme_bw() +
@@ -190,32 +190,11 @@ server <- function(input, output) {
           list(range = c(75, 100), color = "gray"))),
       height = 120, width = 500) %>%
             layout(margin = list(l= 150, r= 10))
- #    %>%
- # add_trace(
- #        type = "indicator",
- #        mode = "number+gauge+delta",
- #        value = 43,
- #        domain = list(x = c(0, 1), y= c(0, 1)),
- #        title = list(text = "<b>Goal 17</b>"),
- #        delta = list(reference = 40),
- #        gauge = list(
- #          shape = "bullet",
- #          axis = list(range = list(NULL, 200)),
- #          threshold = list(
- #            line = list(color = "red", width = 2),
- #            thickness = 0.75,
- #            value = 40),
- #          steps = list(
- #            list(range = c(0, 150), color = "lightgray"),
- #            list(range = c(150, 200), color = "gray"))),
- #        height = 120, width = 500) %>%
- #      layout(margin = list(l= 150, r= 10))
-
+ 
 
   })
   
-  
-  # height = 150, width = 600
+
   
   output$bulletgraph17 <- renderPlotly({
 
