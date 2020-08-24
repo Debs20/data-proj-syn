@@ -94,7 +94,8 @@ server <- function(input, output) {
     
     landing_goals %>%
       mutate(landingPagePath = recode(landingPagePath, "/courses/professional-software-development/" = "/courses/PSD/",
-                                      "/webinars/?fbclid=IwAR2h2oGSxo4ew1QYxMdZVttw6_-wO-pFBSYDUNrZPIJ8vlTJNHpz8m_dtrE" = "/webinars/")) %>%
+                                      "/courses/managing-growth-with-agile/?ct=t(short+courses+uk)&mc_cid=9e22d3be4a&mc_eid=[UNIQID]" =
+                                        "/courses/managaing-growth/", "/courses/thank-you-for-your-application/" = "/courses/thank-you/")) %>%
       arrange(desc(goal17Completions)) %>%
       head(9) %>%
       ggplot() +
@@ -119,8 +120,11 @@ server <- function(input, output) {
   output$landing_goals13 <- renderPlot({
     
     landing_goals %>%
+      filter(landingPagePath != "/webinars/?fbclid=IwAR2h2oGSxo4ew1QYxMdZVttw6_-wO-pFBSYDUNrZPIJ8vlTJNHpz8m_dtrE") %>%
       mutate(landingPagePath = recode(landingPagePath, "/courses/managing-data-business-insights/?ct=t(short+courses+uk_COPY_01)&mc_cid=40897d9e96&mc_eid=[UNIQID]"
-                                      = "/managing-data-business-inights", "/courses/professional-software-development/" = "/courses/PSD/")) %>%
+                                      = "/managing-data-business-inights", "/courses/professional-software-development/" = "/courses/PSD/",
+                                      "/funding/?fbclid=IwAR1VbUBdzStdwzxDMzxJcrAmSxt4056YbybfsxduNaJuDftsN-hWP4skxX0" = "/funding/",
+                                      "/courses/thank-you-data-analysis-application/" = "/courses/thank-you/")) %>%
       arrange(desc(goal13Completions)) %>%
       head(9) %>%
       ggplot() +
