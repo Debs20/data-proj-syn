@@ -5,14 +5,12 @@ server <- function(input, output) {
     # filtered_data <- eventReactive(input$action,{
     
     referrers %>%
-      mutate(fullReferrer = recode(fullReferrer, "forms.zohopublic.eu/codeclan/form/ProfessionalSoftwareDevelopmentcourse/formperma/YQR5YuzRB8ROJrjctYuwRCX9yzeUQF7uZtNJb4rrwDo"
-                                   = "forms.zohopublic.eu", "gstatic.com/atari/embeds/913211048dfa67f4be7864f4505a4b63/intermediate-frame-minified.html"
-                                   = "gstatic.com", "m.facebook.com/" = "social media", "linkedin.com/" = "social media",
-                                   "linkedin.com/feed/" = "social media", "facebook.com/" = "social media", "lm.facebook.com/l.php" = "social media",
-                                   "lm.facebook.com" = "social media", "lnkd.in" = "social media", "I.instrgram.com" = "social media",
-                                   "instagram.com/" = "social media", "linkedin.com/school/codeclan" = "social media",
-                                   "l.facebook.com/" = "social media", "lm.facebook.com/" = "social media", "lnkd.in/" = "social media",
-                                   "l.instagram.com/" = "social media")) %>%
+      mutate(fullReferrer = recode(fullReferrer, "m.facebook.com/" = "social media", "linkedin.com/" = "social media",
+                                    "linkedin.com/feed/" = "social media", "facebook.com/" = "social media", "lm.facebook.com/l.php" = "social media",
+                                    "lm.facebook.com" = "social media", "lnkd.in" = "social media", "I.instagram.com" = "social media",
+                                    "instagram.com/" = "social media", "l.facebook.com/" = "social media", "lm.facebook.com/" = "social media", "lnkd.in/" = "social media",
+                                    "l.instagram.com/" = "social media", "gstatic.com/atari/embeds/913211048dfa67f4be7864f4505a4b63/intermediate-frame-minified.html" =
+                                     "gstatic.com")) %>%
       arrange(desc(sessions)) %>%
       group_by(fullReferrer) %>%
       summarise(sessions = sum(sessions)) %>%
@@ -64,10 +62,10 @@ server <- function(input, output) {
       mutate(landingPagePath = recode(landingPagePath, "/blog/best-podcast-coders-programmers/" = "blogs", 
                                       "/blog/7-celebrities-didnt-know-code/" = "blogs", "/blog/hire-developers-online-tests/" = "blogs",
                                       "/blog/meet-the-graduates-who-quit-their-jobs-to-learn-how-to-code/" = "blogs",
-                                      "/blog/meet-five-codeclan-career-changers/" = "blogs", "/blog/first-developer-job-advice/" = "blogs",
+                                      "/blog/first-developer-job-advice/" = "blogs",
                                       "/blog/best-podcasts-coders-programmers/" = "blogs", "/blog/learn-to-code-working/" = "blogs",
-                                      "/blog/meet-the-team-aileen-mcdonald/" = "blogs",
-                                      "/blog/meet-emma-from-primary-teacher-to-front-end-developer/" = "blogs", "/" = "Homepage", "/blog/9-common-misconceptions-coding/" = "blogs",
+                                      "/blog/meet-emma-from-primary-teacher-to-front-end-developer/" = "blogs", 
+                                      "/" = "Homepage", "/blog/9-common-misconceptions-coding/" = "blogs",
                                       "/blog/9-websites-start-coding-journey/" = "blogs")) %>%
       arrange(desc(sessions)) %>%
       group_by(landingPagePath) %>%
