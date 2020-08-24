@@ -94,7 +94,7 @@ server <- function(input, output) {
     
     landing_goals %>%
       mutate(landingPagePath = recode(landingPagePath, "/courses/professional-software-development/" = "/courses/PSD/",
-                                      "/courses/thank-you-for-your-application/" = "/thank-you-for-application/")) %>%
+                                      "/webinars/?fbclid=IwAR2h2oGSxo4ew1QYxMdZVttw6_-wO-pFBSYDUNrZPIJ8vlTJNHpz8m_dtrE" = "/webinars/")) %>%
       arrange(desc(goal17Completions)) %>%
       head(9) %>%
       ggplot() +
