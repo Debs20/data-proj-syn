@@ -174,7 +174,7 @@ server <- function(input, output) {
       plot_ly(
       type = "indicator",
       mode = "number+gauge+delta",
-      value = 27,
+      value = 45,
       domain = list(x = c(0, 1), y= c(0, 1)),
       title = list(text = "<b>DA clicks"),
       delta = list(reference = 31),
@@ -201,7 +201,7 @@ server <- function(input, output) {
     plot_ly(
       type = "indicator",
       mode = "number+gauge+delta",
-      value = 43,
+      value = 87,
       domain = list(x = c(0, 1), y= c(0, 1)),
       title = list(text = "<b>PSD clicks</b>"),
       delta = list(reference = 40),
